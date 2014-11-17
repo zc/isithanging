@@ -11,7 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-name, version = 'zc.isithanging', '0'
+name, version = 'zc.isithanging', '0.1.0'
 
 install_requires = ['setuptools']
 extras_require = dict(test=['manuel', 'mock', 'zope.testing', 'zc.thread'])

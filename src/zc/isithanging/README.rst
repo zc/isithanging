@@ -25,12 +25,26 @@ run the function.  We'll do so here in a thread:
     ... def thread():
     ...     print zc.isithanging.run(blocker, 1, foo=2)
 
+There's also a decorator that takes wraps a function and takes care of
+calling ``run``.
+
 Let's create seome more jobs:
 
     >>> e1, b1 = zc.isithanging.tests.create_blocker()
+    >>> suspect = zc.isithanging.suspect(b1)
     >>> @zc.thread.Thread
     ... def t1():
-    ...     print zc.isithanging.run(b1, 1)
+    ...     print suspect(1)
+
+.. metadata
+
+   >>> for name in '__name__', '__module__', '__code__', '__defaults__':
+   ...     if not getattr(suspect, name) is getattr(b1, name):
+   ...         print(name)
+
+Above, we used the suspect decorator as a function (rather than with
+decorator syntax.)
+
     >>> e2, b2 = zc.isithanging.tests.create_blocker()
     >>> @zc.thread.Thread
     ... def t2():
@@ -38,9 +52,9 @@ Let's create seome more jobs:
 
 .. Give a little time for the threads to start:
 
-    >>> import time; time.sleep(.01)
+    >>> import time; time.sleep(.1)
 
-... Some time passes:
+.. Some time passes:
 
     >>> timetime += 1
 
@@ -56,7 +70,7 @@ We can see what's running by looking at ``zc.isithanging.running``:
 The show function shows start time, elapsed time in seconds, function
 and arguments.
 
-... Some time passes:
+.. Some time passes:
 
     >>> timetime += 1
 
@@ -91,7 +105,12 @@ Let's finish the jobs and try again:
 Changes
 =======
 
-0.1.0 (yyyy-mm-dd)
+0.2.0 (2014-11-17)
+==================
+
+Added a "suspect" decorator to decorate functions suspected of hanging.
+
+0.1.0 (2014-11-17)
 ==================
 
 Initial release

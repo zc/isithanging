@@ -39,3 +39,15 @@ def run(func, *args, **kw):
 def isithanging(out):
     for j in running:
         out.write(repr(j)+'\n')
+
+class suspect(object):
+
+    def __init__(self, func):
+        self.func = func
+        self.__module__ = func.__module__
+
+    def __call__(self, *args, **kw):
+        return run(self.func, *args, **kw)
+
+    def __getattr__(self, name):
+        return getattr(self.func, name)

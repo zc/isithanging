@@ -39,3 +39,6 @@ def run(func, *args, **kw):
 def isithanging(out):
     for j in running:
         out.write(repr(j)+'\n')
+
+def suspect(func):
+    return lambda *args, **kw: run(func, *args, **kw)

@@ -36,6 +36,12 @@ Let's create seome more jobs:
     ... def t1():
     ...     print suspect(1)
 
+.. metadata
+
+   >>> for name in '__name__', '__module__', '__code__', '__defaults__':
+   ...     if not getattr(suspect, name) is getattr(b1, name):
+   ...         print(name)
+
 Above, we used the suspect decorator as a function (rather than with
 decorator syntax.)
 
@@ -46,7 +52,7 @@ decorator syntax.)
 
 .. Give a little time for the threads to start:
 
-    >>> import time; time.sleep(.01)
+    >>> import time; time.sleep(.1)
 
 .. Some time passes:
 

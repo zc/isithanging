@@ -36,6 +36,6 @@ def run(func, *args, **kw):
     finally:
         running.jobs.remove(job)
 
-def monitor(out):
+def isithanging(out):
     for j in running:
         out.write(repr(j)+'\n')

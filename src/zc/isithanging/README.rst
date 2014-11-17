@@ -73,7 +73,7 @@ When a job stops, it's automatically unregistered:
 There's a zc.monitor command that prints the jobs:
 
     >>> import sys
-    >>> zc.isithanging.monitor(sys.stdout)
+    >>> zc.isithanging.isithanging(sys.stdout)
     Sun Nov 16 09:48:29 2014 2s <function f at 0x102d1e500> (1,) {'foo': 2}
     Sun Nov 16 09:48:29 2014 2s <function f at 0x102d1eb18> (2,) {}
 
@@ -84,7 +84,7 @@ Let's finish the jobs and try again:
     >>> e2.set(); t2.join()
     ((2,), {})
 
-    >>> zc.isithanging.monitor(sys.stdout)
+    >>> zc.isithanging.isithanging(sys.stdout)
 
 
 =======

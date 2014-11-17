@@ -91,7 +91,7 @@ Let's finish the jobs and try again:
 Changes
 =======
 
-0.1.0 (yyyy-mm-dd)
+0.1.0 (2014-11-17)
 ==================
 
 Initial release
